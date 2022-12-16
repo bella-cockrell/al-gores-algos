@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using AlGoreIthms = Algorithms.Algorithms;
 
 namespace al_gores_algos;
 class Program
@@ -21,6 +22,7 @@ class Program
         {
             case "Binary Search":
                 Console.WriteLine("Cool, you want BINARY SEARCH!");
+                //AlGoreIthms.BinarySearch;
                 break;
 
             default:
