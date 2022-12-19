@@ -29,9 +29,16 @@ namespace Algorithms
 
         }
 
-        public static void SelectionSort() 
+        public static void SelectionSort(List<int> list) 
         {
-            
+            var newArray = new List<int>();
+
+            foreach (int i in Enumerable.Range(1, list.Count))
+            {
+                var smallestIndex = FindSmallest(list.ToArray());
+                newArray.Append(list[smallestIndex]);
+                list.RemoveAt(smallestIndex);
+            } 
         }
 
         private static int FindSmallest(int[] array)
