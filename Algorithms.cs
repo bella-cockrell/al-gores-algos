@@ -28,5 +28,26 @@ namespace Algorithms
             return null;
 
         }
+
+        public static void SelectionSort() 
+        {
+            
+        }
+
+        private static int FindSmallest(int[] array)
+        {
+            var smallest = array[0];
+            var smallestIndex = 0;
+
+            foreach (int i in Enumerable.Range(1, array.Length))
+            {
+                if (array[i] < smallest)
+                {
+                    smallest = array[i];
+                    smallestIndex = i;
+                }
+            }
+            return smallestIndex;
+        }
 }
 }
