@@ -29,16 +29,18 @@ namespace Algorithms
 
         }
 
-        public static void SelectionSort(List<int> list) 
+        public static List<int> SelectionSort(List<int> list) 
         {
             var newArray = new List<int>();
 
-            foreach (int i in Enumerable.Range(1, list.Count))
+            foreach (int i in Enumerable.Range(0, list.Count))
             {
                 var smallestIndex = FindSmallest(list.ToArray());
                 newArray.Append(list[smallestIndex]);
                 list.RemoveAt(smallestIndex);
-            } 
+            }
+
+            return newArray; 
         }
 
         private static int FindSmallest(int[] array)
@@ -46,7 +48,7 @@ namespace Algorithms
             var smallest = array[0];
             var smallestIndex = 0;
 
-            foreach (int i in Enumerable.Range(1, array.Length))
+            foreach (int i in Enumerable.Range(0, array.Length))
             {
                 if (array[i] < smallest)
                 {
