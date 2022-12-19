@@ -11,6 +11,7 @@ class Program
 
         var listOfAlgorithms = new Dictionary<string, string>(){
             {"1", "Binary Search"},
+            {"2", "Selection Sort"},
         };
         var sb = new StringBuilder();
         foreach (var kvp in listOfAlgorithms)
@@ -32,7 +33,52 @@ class Program
         switch(userInput)
         {
             case "1":
-                Console.WriteLine("\n >>Cool, you want BINARY SEARCH!\n>>Please enter a list of numbers, separated by a space\n>>E.g. 1 2 3 4");
+               BinarySearch();
+                break;
+            case "2":
+                Console.WriteLine("\n >>Cool, you want SELECTION SORT!\n>>Please enter a list of numbers, separated by a space\n>>E.g. 1 2 3 4");
+
+                string? userInputtedStringOfNumbers = Console.ReadLine();
+
+                var parsedList = new List<int>();
+
+                if (!string.IsNullOrEmpty(userInputtedStringOfNumbers))
+                {
+                    string[]? splitUserInputtedStringOfNumbers = userInputtedStringOfNumbers.Split(" ");
+
+                    foreach(string userInputtedDigit in splitUserInputtedStringOfNumbers )
+                    {
+
+                        int number;
+                        var success = Int32.TryParse(userInputtedDigit, out number);
+
+                        if (success) {
+                            parsedList.Add(number);
+                        } else
+                        {
+                            Console.Write($"Cannot parse '{userInputtedDigit}'");
+                        }
+                    }
+                } 
+                else 
+                {
+                    Console.WriteLine("Can't deal with null!");
+                    return;
+                }
+
+                var result = AlGoreIthms.SelectionSort(parsedList);
+
+                Console.WriteLine($">>Cool, here's what your numbers look like sorted\n" + String.Join(" ", result));
+                break;
+            default:
+                Console.WriteLine("Something's gone wrong!");
+                break;
+        }
+    }
+
+    private static void BinarySearch()
+    {
+         Console.WriteLine("\n >>Cool, you want BINARY SEARCH!\n>>Please enter a list of numbers, separated by a space\n>>E.g. 1 2 3 4");
 
                 string? userInputtedStringOfNumbers = Console.ReadLine();
 
@@ -76,11 +122,5 @@ class Program
                     var result = AlGoreIthms.BinarySearch(binarySearchArray, indexNumber);
                     Console.Write($"The index is {result}");
                 }
-                break;
-
-            default:
-                Console.WriteLine("Something's gone wrong!");
-                break;
-        }
     }
 }
